@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>💕 Eu Te Amo Kamilly 💕</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff6b9d, #ffc0cb, #ff69b4, #ff1493);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      position: relative;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes falling {
+      0% {
+        opacity: 0;
+        transform: translateY(-100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -30px;
+      color: rgba(255, 20, 147, 0.7);
+      pointer-events: none;
+      user-select: none;
+      animation-name: floatUp;
+      animation-timing-function: linear;
+      animation-iteration-count: 1;
+      z-index: 5;
+      will-change: transform, opacity;
+    }
+
+    .burst-heart {
+      position: fixed;
+      font-size: 22px;
+      color: #ff1493;
+      pointer-events: none;
+      user-select: none;
+      animation: heartBurst 800ms ease forwards;
+      z-index: 20;
+      will-change: transform, opacity;
+    }
+
+    @keyframes heartBurst {
+      0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--x), var(--y)) scale(0.5) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .main-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4rem;
+      color: white;
+      text-align: center;
+      margin: 2rem 0 1rem;
+      animation: falling 2s ease forwards;
+    }
+
+    .love-button, .back-button, #musicToggle {
+      font-family: 'Dancing Script', cursive;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .love-button {
+      background: linear-gradient(45deg, #ff6b9d, #ff1493);
+      color: white;
+      box-shadow: 0 10px 30px rgba(255,20,147,0.3);
+      display: inline-block;
+      position: relative;
+      top: 30vh;
+    }
+
+    .back-button {
+      background: linear-gradient(45deg, #ff1493, #ff6b9d);
+      color: white;
+      margin-top: 2rem;
+    }
+
+    #musicToggle {
+      position: fixed;
+      top: 70px; /* espaçamento abaixo do timer */
+      right: 20px;
+      z-index: 100;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.5);
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+
+    #pageWrapper {
+      width: 200vw;
+      height: 100vh;
+      display: flex;
+      transition: transform 0.7s ease;
+      overflow-x: hidden;
+    }
+
+    #page1, #page2 {
+      width: 100vw;
+      height: 100vh;
+      padding: 2rem;
+      color: white;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow-y: auto;
+    }
+
+    #page2 {
+      text-align: center;
+      justify-content: center;
+    }
+
+    #timer {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      color: white;
+      background: rgba(255,20,147,0.3);
+      padding: 6px 12px;
+      border-radius: 25px;
+      z-index: 150;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<audio id="backgroundMusic" src="musica-do-amor.mp3" loop preload="auto"></audio>
+<button id="musicToggle" onclick="toggleMusic()">🎵 Tocar</button>
+<div id="timer">Carregando tempo...</div>
+
+<div id="pageWrapper">
+  <div id="page1">
+    <h1 class="main-title">💕 Eu Te Amo Kamilly 💕</h1>
+    <button class="love-button" id="loveBtn">Clica aqui meu amor! 💕</button>
+  </div>
+
+  <div id="page2">
+    <h2 style="font-family: 'Dancing Script', cursive; font-size: 3rem;">É pra voce minha linda💗</h2>
+    <p style="max-width: 600px; margin: auto; font-size: 1.2rem;">
+      Oiii minha princesaa, ai vc pensa ''nossa mais ele me ama a 1 mes e 18 dias como assim'' ent e pq eu ja achava vc linda perfeita(ainda acho) e eu ja falava de vc pra lizzy td dia mais nunca tive atitude de chegar em vc pra falar q eu gostava de vc, ai eu te segui no instagram e nunca tinha mandado msg. obs: eu so te segui pra ficar vendo suas lindas fotos. ai teve aquele dia que eu e o josue foi perguntar pra vc se vc queria voltar com o gabriel dnv mas antes de eu perguntar aquilo pra vc eu ja gostava de vc kkkkk eu so fiz aquilo pra puxar assunto, ai dps mais tarde quando a gente chegou da escola eu fui la e te mandei msg q eu acho q vc lembra né, ai vc falou la q a nicole fez aquilo la so pra gente namorar, e ela conseguio(ainda bem kkkkk) e vc tem que ver quando tipo agente falou ''flw'' e dps vc mandou ''oou'' eu pulei de felicidades e pensei ''mds ela gostou de conversar cmg'' kkkkk. E quando a lizzy falou la q agente tava namorando meuu Deus eu fiquei com tanta vergonha naquela hora kkkkkkk eu pensei ''mds a menina nunca mais conversa cmg dps dessa'' ai a gente chegou da escola e vc me mandou msg ai eu falei ''mdss ela me mandou msg, ent ela nem ligou pro q a lizzy falou, q bom'' kkkkkkkk ai dps disso eu troquei aquela foto q eu ja tinha no meu relogio antes de vc saber e estou com a foto q a mikaelly mandou de vc ate hj💗. saiba que todos os momentos da minha vida eu penso em voce🫶🏼, Eu te amo!! 😘❤
+    </p>
+    <button class="back-button" onclick="goToPage1()">Voltar 💕</button>
+  </div>
+</div>
+
+<script>
+  const music = document.getElementById('backgroundMusic');
+  const musicToggle = document.getElementById('musicToggle');
+  const loveBtn = document.getElementById('loveBtn');
+  const timer = document.getElementById('timer');
+  let isPlaying = false;
+
+  function toggleMusic() {
+    if (isPlaying) {
+      music.pause();
+      musicToggle.textContent = '🎵 Tocar';
+    } else {
+      music.play();
+      musicToggle.textContent = '🎵 Pausar';
+    }
+    isPlaying = !isPlaying;
+  }
+
+  function goToPage1() {
+    document.getElementById('pageWrapper').style.transform = 'translateX(0)';
+  }
+
+  function goToPage2() {
+    if (!isPlaying) toggleMusic();
+    createHeartExplosion();
+    document.getElementById('pageWrapper').style.transform = 'translateX(-100vw)';
+  }
+
+  loveBtn.addEventListener('click', goToPage2);
+
+  // Floating hearts
+  function createFloatingHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'floating-heart';
+    heart.textContent = Math.random() > 0.5 ? '💕' : '💖';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.fontSize = (15 + Math.random() * 13) + 'px';
+    heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+
+    document.body.appendChild(heart);
+
+    heart.addEventListener('animationend', () => {
+      heart.remove();
+      createFloatingHeart();
+    });
+  }
+
+  function initFloatingHearts(count) {
+    for (let i = 0; i < count; i++) {
+      setTimeout(createFloatingHeart, i * 400);
+    }
+  }
+
+  function createHeartExplosion() {
+    for (let i = 0; i < 30; i++) {
+      setTimeout(() => {
+        const heart = document.createElement('div');
+        heart.className = 'burst-heart';
+        heart.textContent = Math.random() > 0.5 ? '💕' : '💖';
+
+        const rect = loveBtn.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+
+        heart.style.left = `${x}px`;
+        heart.style.top = `${y}px`;
+        heart.style.setProperty('--x', `${(Math.random() - 0.5) * 300}px`);
+        heart.style.setProperty('--y', `${(Math.random() - 0.5) * 300}px`);
+
+        document.body.appendChild(heart);
+        heart.addEventListener('animationend', () => heart.remove());
+      }, i * 30);
+    }
+  }
+
+  function updateTimer() {
+    const startDate = new Date(2025, 4, 28, 6, 0, 0);
+    const now = new Date();
+    if (now < startDate) {
+      timer.textContent = "Ainda não chegou a hora...";
+      return;
+    }
+
+    let months = 0, tempDate = new Date(startDate);
+    while (true) {
+      const nextMonth = new Date(tempDate.getFullYear(), tempDate.getMonth() + 1, tempDate.getDate());
+      if (nextMonth <= now) {
+        months++;
+        tempDate = nextMonth;
+      } else break;
+    }
+
+    const years = Math.floor(months / 12);
+    months %= 12;
+    let diff = now - tempDate;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    diff %= 1000 * 60 * 60 * 24;
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    diff %= 1000 * 60 * 60;
+    const minutes = Math.floor(diff / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    let msg = "❤ Eu te amo há: ";
+    if (years > 0) msg += `${years} ano${years > 1 ? 's' : ''}, `;
+    if (months > 0) msg += `${months} mês${months > 1 ? 'es' : ''}, `;
+    if (days > 0) msg += `${days} dia${days > 1 ? 's' : ''}, `;
+    if (hours > 0) msg += `${hours} hora${hours > 1 ? 's' : ''}, `;
+    if (minutes > 0) msg += `${minutes} minuto${minutes > 1 ? 's' : ''} e `;
+    msg += `${seconds} segundo${seconds > 1 ? 's' : ''}`;
+
+    timer.textContent = msg;
+  }
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      music.play().then(() => {
+        isPlaying = true;
+        musicToggle.textContent = '🎵 Pausar';
+      }).catch(() => {
+        musicToggle.textContent = '🎵 Tocar';
+      });
+    }, 1000);
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+    initFloatingHearts(20);
+  });
+</script>
+</body>
+</html>
